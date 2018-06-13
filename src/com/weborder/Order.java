@@ -63,7 +63,13 @@ public class Order {
 		
 		driver.findElement(By.id("ctl00_MainContent_fmwOrder_InsertButton")).click();
 		
-		if (driver.getPageSource().toString().contains("New order has been successfully added")) {
+		String expected = "New order has been successfully added";
+		String result = driver.findElement(By.xpath("//*[@id=\"ctl00_MainContent_fmwOrder\"]/tbody/tr/td/div/strong")).getText();
+		
+		System.out.println(result);
+		
+		if (result.contains(expected)) {
+		//if (driver.getPageSource().toString().contains("New order has been successfully added")) {
 			System.out.println("Pass");
 		}
 		else {
